@@ -1,0 +1,289 @@
+Process Management:
+
+Concepts:
+
+Idle state is called as Program and when it is running is called as Process.
+
+PID - Process id : unique identifier
+PPID - Parent process id :
+From one process and other process is started and subprocess is called as child
+*******************************************************************
+INIT -PID 1- Started by Kernel-> No parent process
+***********************************************************************
+
+daemon : process which are running in computer still its on is called as daemon like in the backrkground
+kill process: then we can make process dead state
+zombie: process is not working and it will show then hence it is called zombie and it is dead already
+
+########################################################################################################################################
+
+How process work?
+
+Init process is having the scripts which is having processes and it starts with the series which is required by os and majority deamon get started.
+baclground process which is needed by os.
+
+There are many process which one process is dependent on other and it started via Kernel.
+and hence it comes up with owner .
+
+Kernel -> Init ->>>>>> and many processes which we needs -> owner is assigned.
+
+---------------------------------------------------------------------------------------------------
+Handson Process
+
+If you want to know the current process which is then at that time we need to run the following command and we will get the current process if
+root@ip-172-31-29-55:~# echo $$
+4465
+
+if  we need to know the process id of the parent at that time we need to run this.
+root@ip-172-31-29-55:~# echo $PPID
+4464
+
+for both parent and child process.
+root@ip-172-31-29-55:~# echo $PPID $$
+4464 4465
+
+then execute bash it will change the current shell and we run the command again then the last child process will become parent process and so on:
+
+root@ip-172-31-29-55:~# bash
+root@ip-172-31-29-55:~# echo $PPID $$
+4465 4479
+root@ip-172-31-29-55:~# bash
+root@ip-172-31-29-55:~# echo $PPID $$
+4479 4486
+
+Forking concept:
+
+root@ip-172-31-29-55:~# bash
+root@ip-172-31-29-55:~# echo $$
+4524
+root@ip-172-31-29-55:~# bash
+root@ip-172-31-29-55:~# echo $$ $PPID
+4533 4524
+
+Check the process:
+root        4524    4516  0 16:10 pts/1    00:00:00 bash
+root        4533    4524  0 16:10 pts/1    00:00:00 bash
+
+exec:
+
+exec command in Linux is used to execute a command from the bash itself. This command does not create a new process it just replaces the bash with the command to be executed. If the exec command is successful, it does not return to the calling process.
+
+root@ip-172-31-29-55:~# exec > filname
+root@ip-172-31-29-55:~# ls
+root@ip-172-31-29-55:~# exit
+exit
+
+###########################################################################################################################################
+
+Viewing process:
+
+root@ip-172-31-29-55:~# ps
+    PID TTY          TIME CMD
+  19101 pts/1    00:00:00 sudo
+
+PID - process id
+TTY - terminal type
+Time - when it started
+cmd : which command
+
+root@ip-172-31-29-55:~# ps x
+    PID TTY      STAT   TIME COMMAND
+      1 ?        Ss     0:06 /sbin/init
+      2 ?        S      0:00 [kthreadd]
+      3 ?        I<     0:00 [rcu_gp]
+     25 ?        SN     0:00 [ksmd]
+New things state ss- sleep
+                  <- high priority, sn - low priority proces
+				  
+There are many types we can see the process as per requirement here are some examples:
+root@ip-172-31-29-55:~# ps -aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  1.2 101876 12480 ?        Ss   Jul25   0:06 /sbin/init
+
+Extra : CPU , MEMORY, VSZ- VIRTUAL SIZE RSS- RAM SIZE START- START TIME TIME- KBPS
+
+root@ip-172-31-29-55:~# ps -ely
+S   UID     PID    PPID  C PRI  NI   RSS    SZ WCHAN  TTY          TIME CMD
+S     0       1       0  0  80   0 12480 25469 ep_pol ?        00:00:06 systemd
+
+root@ip-172-31-29-55:~# ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 Jul25 ?        00:00:06 /sbin/init
+
+root@ip-172-31-29-55:~# ps -ely
+S   UID     PID    PPID  C PRI  NI   RSS    SZ WCHAN  TTY          TIME CMD
+S     0       1       0  0  80   0 12480 25469 ep_pol ?        00:00:06 systemd
+
+root@ip-172-31-29-55:~# ps -u
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         681  0.0  0.1   6216  1156 ttyS0    Ss+  Jul25   0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,57600,38400,9600
+root         684  0.0  0.1   6172  1080 tty1     Ss+  Jul25   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+
+ps -eo pid,user,uid,%cpu,%mem,vsz,rss,comm
+
+pstree command : It is used to show process in tree format and here I checked the process of command itself and it is the detailed view .
+
+root@ip-172-31-29-55:~# pstree -s 19160
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─acpid
+        ├─2*[agetty]
+        ├─amazon-ssm-agen─┬─ssm-agent-worke───6*[{ssm-agent-worke}]
+        │                 └─7*[{amazon-ssm-agen}]
+        ├─chronyd───chronyd
+        ├─cron
+        ├─dbus-daemon
+        ├─multipathd───6*[{multipathd}]
+        ├─networkd-dispat
+        ├─packagekitd───2*[{packagekitd}]
+        ├─polkitd───2*[{polkitd}]
+        ├─rsyslogd───3*[{rsyslogd}]
+        ├─snapd───10*[{snapd}]
+        ├─sshd─┬─sshd───sshd───bash───sudo───sudo───su───bash───pstree
+        │      └─sshd───sshd───sftp-server
+        ├─systemd───(sd-pam)
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-network
+        ├─systemd-resolve
+        ├─systemd-udevd
+        ├─udisksd───4*[{udisksd}]
+        └─unattended-upgr───{unattended-upgr}
+
+Reference : https://linuxhint.com/manage-processes-ubuntu-linux/
+
+This are the main commands for the ps:
+Conclusion:
+To see every process on the system using standard syntax:
+          ps -e
+          ps -ef
+          ps -eF
+          ps -ely
+
+       To see every process on the system using BSD syntax:
+          ps ax
+          ps axu
+
+       To print a process tree:
+          ps -ejH
+          ps axjf
+
+       To get info about threads:
+          ps -eLf
+          ps axms
+
+       To get security info:
+          ps -eo euser,ruser,suser,fuser,f,comm,label
+          ps axZ
+          ps -eM
+
+       To see every process running as root (real & effective ID) in user format:
+          ps -U root -u root u
+
+       To see every process with a user-defined format:
+          ps -eo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm
+          ps axo stat,euid,ruid,tty,tpgid,sess,pgrp,ppid,pid,pcpu,comm
+          ps -Ao pid,tt,user,fname,tmout,f,wchan
+
+############################################################################################################################################
+
+Killing process:
+
+When we wnat to end the process then we will send signal is called kill process:
+
+kill processid
+
+ubuntu@ip-172-31-29-55:~$ kill -l
+ 1) SIGHUP       2) SIGINT- signal intterupt       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+ 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL main signal    10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
+
+bydefault for terminal : 15
+if the process is going and if it is not killing then kernel will end the process so kill -9
+ kill -9 processid
+ Then internall it will kill via SIGKILL and this go in kernel and end the process.
+ 
+###################################################################################################
+
+Top command:
+
+It is the real time view of the process and after 30 seconds it gets updated.
+
+Paramaters:
+Time : current time, up is from 2 days machine 1 user-loggedin how much
+load average : last 1 min load, last 5, last 15 , tasks : how much tasks running : how much process and sleeping how much sleepy zombie are 0
+
+%cpu : user are taking how much process us,user are taking how much process sy-system
+ni: low priority and id is idle, wa : waiting (input and output device) hi: hardware inetrrupts, si : software interrupts st: stolentime (value is low it is good if value is high then risky)
+
+Note : for quit -q
+       for h help
+	   down arrow : down arrow key
+	   for k if we need to kill and take the pid and then signal which we wnat as previous
+
+ubuntu@ip-172-31-29-55:~$ top
+top - 16:03:27 up 2 days, 8 min,  3 users,  load average: 0.00, 0.00, 0.00
+Tasks: 112 total,   1 running, 111 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :    967.9 total,    138.7 free,    202.7 used,    626.4 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.    584.5 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  19255 ubuntu    20   0   17456   8444   5944 S   0.3   0.9   0:00.05 sshd
+  19348 ubuntu    20   0   10892   3836   3148 R   0.3   0.4   0:00.08 top
+      1 root      20   0  101876  12484   7836 S   0.0   1.3   0:06.49 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par_gp
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 netns
+      7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri
+     10 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 mm_percpu_wq
+     11 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_rude_
+     12 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_trace
+     13 root      20   0       0      0      0 S   0.0   0.0   0:00.45 ksoftirqd/0
+     14 root      20   0       0      0      0 I   0.0   0.0   0:01.10 rcu_sched
+     15 root      rt   0       0      0      0 S   0.0   0.0   0:01.13 migration/0
+     16 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/0
+     17 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0
+     18 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kdevtmpfs
+     19 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 inet_frag_wq
+     20 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kauditd
+     21 root      20   0       0      0      0 S   0.0   0.0   0:00.04 khungtaskd
+     22 root      20   0       0      0      0 S   0.0   0.0   0:00.00 oom_reaper
+     23 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 writeback
+     24 root      20   0       0      0      0 S   0.0   0.0   0:05.74 kcompactd0
+     25 root      25   5       0      0      0 S   0.0   0.0   0:00.00 ksmd
+     26 root      39  19       0      0      0 S   0.0   0.0   0:01.20 khugepaged
+     72 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kintegrityd
+     73 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kblockd
+     74 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 blkcg_punt_bio
+     75 root      20   0       0      0      0 S   0.0   0.0   0:00.00 xen-balloon
+     76 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 tpm_dev_wq
+     77 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 ata_sff
+
+Nice :
+
+It is for priority we get nice value by ps -l then NI we will see and it is like integer:
+
+-20 hIGH PRIOROTY +19 Low priority
+nice -n +10 sleep 8000 $
+ps -l
+then prioroty got change
+at the start od process
+
+renice:
+when process is in running state and we have to change its the nice value.
+renice +19 pid
+renice -15 pid
+
+
+Note : only root user can change whatever the negative value is then user cannot changed
