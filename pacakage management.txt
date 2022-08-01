@@ -1,0 +1,89 @@
+Linux Package management :
+------------------------------
+
+install and uninstall the applications
+dependencies, repo, files and binary files
+
+debian : dpkg
+redhat : rpm
+
+debian : apt-get
+redhat : yum
+
+----RPM : 
+redhat pacakage manager ,  we need to download any pacakage locally and then we need to install it into the system but main disadvantage of this we need to check dependecies error on the system and we need to install the dependecies of whole pacakage.
+RPM deals with .rpm files, which contains the actual information about the packages such as: what it is, from where it comes, dependencies info, version info etc.
+
+Commands:
+
+We need to run below command to check signature and it o/p must be OK
+
+rpm --checksig pidgin-2.7.9-5.el6.2.i686.rpm
+
+Install rpm pacakage:
+
+rpm -ivh pidgin-2.7.9-5.el6.2.i686.rpm
+-i : install a package
+-v : verbose for a nicer display
+-h: print hash marks upto 50 as the package archive is unpacked.
+
+----------------------------------------------------------------------------------------------
+to check dependencies:
+
+rpm -qpR BitTorrent-5.2.2-1-Python2.4.noarch.rpm
+
+Note : noarch is it can be used in each and every acrchitecture
+q : Query a package
+-p : List capabilities this package provides.
+-R: List capabilities on which this package depends..
+
+------------------------------------------------------------------------------------------------
+rpm -ivh --nodeps BitTorrent-5.2.2-1-Python2.4.noarch.rpm
+
+Without dependency check.
+--------------------------------------------------------------------------------------------------
+
+rpm -q BitTorrent
+to check the pacakage.
+
+---------------------------------------------------------------------------------------------------
+to check the files, qf : query files, qi : query information, qip : query information pacakage
+rpm -ql BitTorrent
+query list
+---------------------------------------------------------------------------------------------------
+
+rpm -qa --last ;; --latest
+rpm -qa --all ;; queries
+---------------------------------------------------------------------------------------------------
+
+rpm -Uvh nx-3.5.0-2.el6.centos.i686.rpm
+-U option is for upgrade
+
+To uninstall the pacakages:
+
+rpm -evv nx
+
+To uninstall the pacakages with dependencies:
+rpm -ev --nodeps vsftpd
+
+---------------------------------------------------------------------------------------------------
+###################################################################################################
+
+YUM : YELLOW DOG UPDATE MODIFIER:
+YUM (Yellowdog Updater Modified) is an open-source command-line as well as graphical-based package management tool for RPM (RedHat Package Manager) based Linux systems.
+It is based on network and installed the automatic dependencies
+
+yum install pacakagename
+yum remove pacakagename
+yum -y install pacakagename
+
+
+EPEL : EPEL (Extra Packages for Enterprise Linux) is an open-source and free community-based repository project from the Fedora team which provides 100% high-quality add-on software packages for Linux distribution including RHEL (Red Hat Enterprise Linux), CentOS Stream
+
+We need to add the repository and add the files in the system and from here we can take pacakages based on the flavours of the Linux.
+
+
+RHEL, CENTOS
+
+Reference Links :
+https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/
