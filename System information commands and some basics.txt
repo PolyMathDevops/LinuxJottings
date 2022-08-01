@@ -1,0 +1,143 @@
+Basic commands to check the os version and hardware details in Linux:
+1. uname -a
+Linux tecmint.com 3.13.0-37-generic #64-Ubuntu SMP Mon Sep 22 21:28:38
+UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+---------------------------------------------------------------------------------------------------
+Using os-release file available in Linux’s etc directory.
+
+We can check the Linux Operating system:
+cat /etc/os-release
+
+---------------------------------------------------------------------------------------------------
+Lsb_release :
+
+LSB Stands for Linux Standard Base, we can check the  Linux Operating System (OS)
+
+lsb_release -a
+---------------------------------------------------------------------------------------------------
+Using version file available in Linux Proc directory:
+
+cat /proc/version
+
+---------------------------------------------------------------------------------------------------
+lshw:
+------
+------
+
+lshw is a relatively small tool and there are few options that you can use with it while extracting information. The information provided by lshw was gathered from different /proc files.
+cat /proc files
+sudo lshw
+
+***************************************************************************************************
+
+Linux CPU Information:
+-----------------------
+hows information about your CPU architecture such as a number of CPUs, cores, CPU family model, CPU caches, threads, etc from sysfs and /proc/cpuinfo.
+cat /proc/cpuinfo
+
+lscpu 
+
+***************************************************************************************************
+
+Linux Block Device Information:
+Block devices information such as harddisk and ram.
+
+Command:
+lsblk
+NAME    MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda       8:0    0 931.5G  0 disk 
+├─sda1    8:1    0  1000M  0 part 
+├─sda2    8:2    0   260M  0 part /boot/efi
+├─sda3    8:3    0  1000M  0 part 
+├─sda4    8:4    0   128M  0 part 
+├─sda5    8:5    0 557.1G  0 part 
+├─sda6    8:6    0    25G  0 part 
+├─sda7    8:7    0  14.7G  0 part 
+├─sda8    8:8    0     1M  0 part 
+├─sda9    8:9    0 324.5G  0 part /
+└─sda10   8:10   0   7.9G  0 part [SWAP]
+sr0      11:0    1  1024M  0 rom  
+
+lsblk -a
+NAME    MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda       8:0    0 931.5G  0 disk 
+├─sda1    8:1    0  1000M  0 part 
+├─sda2    8:2    0   260M  0 part /boot/efi
+├─sda3    8:3    0  1000M  0 part 
+├─sda4    8:4    0   128M  0 part 
+├─sda5    8:5    0 557.1G  0 part 
+├─sda6    8:6    0    25G  0 part 
+├─sda7    8:7    0  14.7G  0 part 
+├─sda8    8:8    0     1M  0 part 
+├─sda9    8:9    0 324.5G  0 part /
+└─sda10   8:10   0   7.9G  0 part [SWAP]
+sdb       8:16   1         0 disk 
+sr0      11:0    1  1024M  0 rom  
+ram0      1:0    0    64M  0 disk 
+ram1      1:1    0    64M  0 disk 
+ram2      1:2    0    64M  0 disk 
+ram3      1:3    0    64M  0 disk 
+ram4      1:4    0    64M  0 disk 
+ram5      1:5    0    64M  0 disk 
+ram6      1:6    0    64M  0 disk 
+ram7      1:7    0    64M  0 disk 
+ram8      1:8    0    64M  0 disk 
+ram9      1:9    0    64M  0 disk 
+loop0     7:0    0         0 loop 
+loop1     7:1    0         0 loop 
+loop2     7:2    0         0 loop 
+loop3     7:3    0         0 loop 
+loop4     7:4    0         0 loop 
+loop5     7:5    0         0 loop 
+loop6     7:6    0         0 loop 
+loop7     7:7    0         0 loop 
+ram10     1:10   0    64M  0 disk 
+ram11     1:11   0    64M  0 disk 
+ram12     1:12   0    64M  0 disk 
+ram13     1:13   0    64M  0 disk 
+ram14     1:14   0    64M  0 disk 
+ram15     1:15   0    64M  0 disk
+
+---------------------------------------------------------------------------------------------------
+Linux Usb:
+
+Command:
+lsusb
+Bus 001 Device 002: ID 8087:8000 Intel Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 005: ID 0bda:b728 Realtek Semiconductor Corp. 
+Bus 002 Device 004: ID 5986:0249 Acer, Inc 
+Bus 002 Device 003: ID 0bda:0129 Realtek Semiconductor Corp. 
+RTS5129 Card Reader Controller
+Bus 002 Device 002: ID 045e:00cb Microsoft Corp. 
+Basic Optical Mouse v2.0
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 
+2.0 root hub
+
+---------------------------------------------------------------------------------------------------
+PCI devices may include usb ports graphic cards and network adapaters.
+
+lspci - for pci
+cd hdpark for the sata devices and in that file
+
+---------------------------------------------------------------------------------------------------
+
+For file system information: fdisk -l 
+You will get all the details and /dev/sda.
+
+---------------------------------------------------------------------------------------------------
+For Linux hardware components:
+dmidecode
+It is used to extract hardware information like memory, system, bios and processor of the system,
+dmidecode -t memory
+dmidecode -t processor
+dmidecode -t system
+
+Free -g :
+To check the memory and swap space
+
+https://www.youtube.com/watch?v=J0vBrRbXQrA
+
+Vishesh Malik, Technical Guru
+16.8K subscribers
