@@ -1,0 +1,90 @@
+How linux boots:
+BIOS:
+POST-Power on self state when we power on the machine it goes to the smps at hardware level and give the powersupply to all the parts and then we need to press the F2 or F12 DEPENDING ON THE MACHINE to change the boot sequence and it executes the MBR
+MBR :
+Master boot record basically the first sector of harddisk which is of 512mb
+in linux : /dev/hda or /dev/sda
+three compeonensts:
+primary boot loader : 446 bytes
+partition table : 64 butes
+and validation check : 2bytes (additional information of grub)
+it executes the GRUB
+
+GRUB:
+MAIN task is to check for differenr kernel images and exceute which one is needed
+if not enter anything default image it will load.
+/boot/grub/grub.conf
+
+KERNEL:
+cpu like mount the rioot file system and execute the parent process init
+/sbin/iniy
+
+Note:
+The initrd files are usually in /boot directory, named /boot/initrd. img-kversion with a /initrd. img being a symbolic link to the latest installed initrd
+
+initrd( he vmlinuz and initrd files are in a /boot directory. This directory is special — it is reserved for boot files, and the bootloader knows to look for this directory. It is generally a separate partition of the primary disk where the operating system is installed)
+ various executables and drivers that permit the real root file system to be mounted and then its memory is freed
+
+ Init
+ Looks at the /etc/inittab file to decide the Linux run level.
+Following are the available run levels
+0 – halt
+1 – Single user mode
+2 – Multiuser, without NFS
+3 – Full multiuser mode
+4 – unused
+5 – X11-gui
+6 – reboot
+Init identifies the default initlevel from /etc/inittab and uses that to load all appropriate program.
+
+Runlevel programs
+When the Linux system is booting up, you might see various services getting started
+and it is running from run level dir
+Run level 0 – /etc/rc.d/rc0.d/
+Run level 1 – /etc/rc.d/rc1.d/
+Run level 2 – /etc/rc.d/rc2.d/
+Run level 3 – /etc/rc.d/rc3.d/
+Run level 4 – /etc/rc.d/rc4.d/
+Run level 5 – /etc/rc.d/rc5.d/
+Run level 6 – /etc/rc.d/rc6.d/
+symbolic links
+ograms starts with S are used during startup. S for startup.
+Programs starts with K are used during shutdown. K for kill.
+
+
+Commands:
+runlevel Command: runlevel prints the previous and current runlevel of the system.
+who Command: Print information about users who are currently logged in. It will print the runlevel information with “-r” option.
+systemctl Command: It controls the systemd system and service manager.
+Using /etc/inittab File: The default runlevel for a system is specified in the /etc/inittab file for SysVinit System.
+Using /etc/systemd/system/default.target File: The default runlevel for a system is specified in the “/etc/systemd/system/default.target” file for systemd System.
+
+reference links:
+https://www.tecmint.com/change-runlevels-targets-in-systemd/
+https://www.tecmint.com/systemd-replaces-init-in-linux/
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Linux System heirarchy:
+
+/ is the root directory and hence the forward slash
+
+/root
+/home
+/boot
+/etc
+/bin
+note : / is the parent directory and /root is home directory of user root
+
+File system hierarchy:
+/home : home directory for other users
+/root : home directory for the root user
+/boot : contains bootable files -POST and also contains operating system files if did anything then system is of no use and software will be not active.
+/etc : configuration files : machine hardware information
+/usr : default software has installed
+/bin : commands used by all the users
+/sbin : commands by root users
+/opt : other packageges
+/dev : devices like keyboard, hardware and usb
+
+Reference Links :
+https://www.geeksforgeeks.org/linux-file-hierarchy-structure/

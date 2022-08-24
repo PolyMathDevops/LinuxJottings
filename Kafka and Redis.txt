@@ -1,0 +1,72 @@
+Kafka commands:
+https://killercoda.com/
+##############################################################################################################################################
+List topics of kafka :
+---------------------
+
+kafka-topics \
+  --bootstrap-server localhost:9092 \
+  --list
+
+##############################################################################################################################################
+
+Topic for deletion of kafka
+----------------------------
+
+delete is for flag,
+topic is for topic topic name
+
+kafka-topics \
+   --bootstrap-server localhost:9092,localhost:9093,localhost:9094 \
+   --delete \
+   --topic topic_for_deletion
+
+'test-.*' delete for the topic 
+
+###############################################################################################################################################
+To create the topic for kafka:
+----------------------------------
+
+kafka-topics \
+  --bootstrap-server localhost:9092 \
+  --create \
+  --topic topic-name
+  
+Links to learn kafka:
+https://betterprogramming.pub/kafka-cli-commands-1a135a4ae1bd
+
+
+Note :
+
+Point to be noted for redis:
+
+There will be only one Master with multiple slaves for replication.
+All write goes to Master, which creates more load on the master node.
+If the Master goes down, the whole architecture is prone to SPOF (Single point of failure).
+M-S architecture does not help in scaling when your user base grows.
+So we need a process to Monitor Master in case of failure or shutdown, that is Sentinel.
+
+“A query that used to take an hour can run in seconds on cache”.
+
+Note:
+There are 16384 slots. These slots are divided by the number of servers.
+
+If there are 3 servers; A, B and C then
+
+Server 1 contains hash slots from 0 to 5500.
+Server 2 contains hash slots from 5501 to 11000.
+Server 3 contains hash slots from 11001 to 16383.
+
+Commands :
+
+$ redis-cli // login to localhost and default port
+
+$ redis-cli -p // login to localhost on custom port
+
+$ redis-cli -h <host_address> -p <port> // login to redis on remote host and port
+
+127.0.0.1:6379> SELECT 5 // select database at index 5
+
+127.0.0.1:6379> FLUSHALL // delete everything
+
+127.0.0.1:6379> FLUSHDB // delete data in the current database
