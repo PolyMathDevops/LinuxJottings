@@ -1,0 +1,963 @@
+Git:
+-------
+
+Version and Version Control
+and version and we can maintain the history and we need to share the code and then we can use to github
+
+Github:
+--------
+
+Its is the platform and hence it is called repository and the folder are there we can use it for changes.
+Git, Bitbucket and Gitlab
+
+Github working strategy:
+-------------------------
+
+Master
+Develop
+Feature
+Release
+Hotfix
+
+VCS: Version Control System
+-------------------------------
+
+Version Control System (VCS) is a software that helps software developers to work together and maintain a complete history of their work.
+If the server goes down, then the repository from any client can be copied back to the server to restore it
+Every checkout is a full backup of the repository.
+
+Commands:
+-------------
+
+git init
+git commit -m ""
+git add .
+git add filename.txt
+git log
+git status
+git remote add origin <url>
+git remote -v
+git push origin master
+git branch feature
+git checkout feature
+git commit
+git main
+git merge feature
+git config --global user.name "Jerry Mouse"
+git clone gituser@git.server.com:project.git
+git show cbe1249b140dad24b2c35b15cc7e26a6f02d2277
+git diff //we can see the difference
+git commit --amend -m 'Changed return type of my_strlen to size_t //ammend operation if we want to make changes
+git tag -a 'Release_1_0' -m 'Tagged basic string operation code' HEAD
+git push origin tag Release_1_0
+
+Steps:
+
+
+Basic steps:
+
+1.Create the directory and traverse into the directory.
+2. ls -a ( hidden files)
+3. then create the file using touch command
+4. git init : we can get into the master and we will get the hidden files.
+5. then check the status : git status ( it will check the status whether history is maintained or not and track the changes whatever is done)
+6. Commands: git add . 
+             git add filename.txt
+Then we can add the filename into that folder 
+7. Commit changes:
+git commit -m "names.txt file added"
+-m option is for message
+8. Again bringing back to same. 
+git restore --staged names.txt
+
+9. git log
+Now git log modified
+10. git reset c89f2b90e4e813cb3b91630e55063787215284b9
+11. git stash ( bringing filename without commiting and then other files we can do as 
+    git stash pop
+	git stash clear
+12.
+$ git remote add origin https://github.com/PolyMathDevops/Test-Repository
+$ git remote -v :Url attached
+origin  https://github.com/PolyMathDevops/Test-Repository (fetch)
+origin  https://github.com/PolyMathDevops/Test-Repository (push)
+By default it is called branches and hence main are default
+git push origin master
+
+13. $ ls .git
+COMMIT_EDITMSG  ORIG_HEAD  description  index  logs/     refs/
+HEAD            config     hooks/       info/  objects/
+
+HEAD - head is the pointer and with that we can add the changes without effecting the resources so we need to point.
+
+.git/refs/heads/master file stores the commit ID of the HEAD pointer. We can verify it by using the git log -1 command.
+
+git tag -a 'Release_1_0' -m 'Tagged basic string operation code' HEAD
+
+
+git branch feature
+git checkout feature
+git commit
+git main
+git merge feature
+git show
+git diff
+git pull
+
+
+14. Fork ( We cannot directly make changes and then without permission so we need to fork in our github)
+and only those have approval can do
+
+git clone "url"
+git remote add upstream
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+Handson:
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop
+$ mkdir project
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop
+$ pwd
+/c/Users/ShivaniGadekar(Partn/Desktop
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop
+$ cd project
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project
+$ pwd
+/c/Users/ShivaniGadekar(Partn/Desktop/project
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project
+$ ls -ltrh
+total 0
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project
+$ cd ..
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop
+$ ls -ltrh
+total 733K
+-rw-r--r-- 1 AzureAD+ShivaniGadekar(Partn 4096  282 Jan 31  2022 desktop.ini
+-rwxr-xr-x 1 AzureAD+ShivaniGadekar(Partn 4096 717K Feb 22  2022 pscp.exe*
+-rwxr-xr-x 1 AzureAD+ShivaniGadekar(Partn 4096  908 May  9 10:27 Tasks_session.lnk*
+-rwxr-xr-x 1 AzureAD+ShivaniGadekar(Partn 4096 2.3K Jun 28 09:11 Slack.lnk*
+-rwxr-xr-x 1 AzureAD+ShivaniGadekar(Partn 4096 2.0K Jul 10 17:49 Zoom.lnk*
+drwxr-xr-x 1 AzureAD+ShivaniGadekar(Partn 4096    0 Sep  1 17:45 project/
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop
+$ cd project/
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project
+$ ls
+
+Note : This is the command which is use to initalise the master and once we hit the command we can save the history of the project we are creating it.
+
+It is 
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project
+$ git init
+Initialized empty Git repository in C:/Users/ShivaniGadekar(Partn/Desktop/project/.git/
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls -a
+./  ../  .git/
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls .git
+HEAD  config  description  hooks/  info/  objects/  refs/
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls .git
+HEAD  config  description  hooks/  info/  objects/  refs/
+
+So now we are creating the names.txt file and we wanted to know whether the file is visible and created by everyone and how you will do that ?
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ touch names.txt
+
+We need to enter the command git status and we can see the file created and see the untracked changes.
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        names.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add .
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   names.txt
+
+so we can do git add filename.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m "names.txt file added"
+[master (root-commit) c89f2b9] names.txt file added
+ Committer: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ vim names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git restore --staged names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m "Now again back to sname"
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ vim names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add names.txt
+warning: in the working copy of 'names.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m " added data"
+[master 635769c]  added data
+ Committer: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 7 insertions(+)
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit 635769caf83d847edb1ba51fbb84035c42ab567c (HEAD -> master)
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:44:11 2022 +0530
+
+     added data
+
+commit c89f2b90e4e813cb3b91630e55063787215284b9
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ rm -rf names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stataus
+git: 'stataus' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m " File deleted"
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git reset c89f2b90e4e813cb3b91630e55063787215284b9
+Unstaged changes after reset:
+D       names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit c89f2b90e4e813cb3b91630e55063787215284b9 (HEAD -> master)
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ vim names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git restore --staged names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m "Now again back to sname"
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ vim names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add names.txt
+warning: in the working copy of 'names.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m " added data"
+[master 635769c]  added data
+ Committer: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 7 insertions(+)
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit 635769caf83d847edb1ba51fbb84035c42ab567c (HEAD -> master)
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:44:11 2022 +0530
+
+     added data
+
+commit c89f2b90e4e813cb3b91630e55063787215284b9
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ rm -rf names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stataus
+git: 'stataus' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m " File deleted"
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit 635769caf83d847edb1ba51fbb84035c42ab567c (HEAD -> master)
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:44:11 2022 +0530
+
+     added data
+
+commit c89f2b90e4e813cb3b91630e55063787215284b9
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git reset c89f2b90e4e813cb3b91630e55063787215284b9
+Unstaged changes after reset:
+D       names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit c89f2b90e4e813cb3b91630e55063787215284b9 (HEAD -> master)
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add .
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    names.txt
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ touch surnames.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add .
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    names.txt -> surnames.txt
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+surnames.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ vim surnames.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ touch houses.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ vim houses.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add .
+warning: in the working copy of 'surnames.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '1', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'houses.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   1
+        new file:   houses.txt
+        deleted:    names.txt
+        new file:   surnames.txt
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stash
+Saved working directory and index state WIP on master: c89f2b9 names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ cat names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stash pop
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   1
+        new file:   houses.txt
+        new file:   surnames.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+Dropped refs/stash@{0} (b3f4283fb89515837d66c5cbe8495c4094ed8ae9)
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+1  houses.txt  surnames.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add .
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stash
+Saved working directory and index state WIP on master: c89f2b9 names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stash pop
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   1
+        new file:   houses.txt
+        new file:   surnames.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+Dropped refs/stash@{0} (067e49acf83d01cfbc30c14ecbc4ff494e2f662a)
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+1  houses.txt  surnames.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add .
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+1  houses.txt  surnames.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stash
+Saved working directory and index state WIP on master: c89f2b9 names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git stash clear
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+names.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 235 bytes | 78.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/PolyMathDevops/Test-Repository/pull/new/master
+remote:
+To https://github.com/PolyMathDevops/Test-Repository
+ * [new branch]      master -> master
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ touch hotel.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ touch roll no.txt
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git add .
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m " files added
+>
+>
+bash: unexpected EOF while looking for matching `"'
+bash: syntax error: unexpected end of file
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git commit -m " files added"
+[master 8d6e8d3]  files added
+ Committer: PolyMathDevops <shivani.gadekar@resilinc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hotel.txt
+ create mode 100644 no.txt
+ create mode 100644 roll
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit 8d6e8d3f97131b6ea431afe8e72a99a968996eb3 (HEAD -> master)
+Author: PolyMathDevops <shivani.gadekar@resilinc.com>
+Date:   Fri Sep 2 14:56:56 2022 +0530
+
+     files added
+
+commit c89f2b90e4e813cb3b91630e55063787215284b9 (origin/master)
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls
+hotel.txt  names.txt  no.txt  roll
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ ls .git
+COMMIT_EDITMSG  ORIG_HEAD  description  index  logs/     refs/
+HEAD            config     hooks/       info/  objects/
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit 8d6e8d3f97131b6ea431afe8e72a99a968996eb3 (HEAD -> master)
+Author: PolyMathDevops <shivani.gadekar@resilinc.com>
+Date:   Fri Sep 2 14:56:56 2022 +0530
+
+     files added
+
+commit c89f2b90e4e813cb3b91630e55063787215284b9 (origin/master)
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git remote -v
+origin  https://github.com/PolyMathDevops/Test-Repository (fetch)
+origin  https://github.com/PolyMathDevops/Test-Repository (push)
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 269 bytes | 134.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/PolyMathDevops/Test-Repository
+   c89f2b9..8d6e8d3  master -> master
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git log
+commit 8d6e8d3f97131b6ea431afe8e72a99a968996eb3 (HEAD -> master, origin/master)
+Author: PolyMathDevops <shivani.gadekar@resilinc.com>
+Date:   Fri Sep 2 14:56:56 2022 +0530
+
+     files added
+
+commit c89f2b90e4e813cb3b91630e55063787215284b9
+Author: Shivani Gadekar (Partner) <shivani.gadekar@resilinc.com>
+Date:   Thu Sep 1 18:29:57 2022 +0530
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$
+
+
+
+
+    names.txt file added
+
+AzureAD+ShivaniGadekar(Partn@DESKTOP-0MCDPFL MINGW64 ~/Desktop/project (master)
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager-core
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=PolyMathDevops
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/PolyMathDevops/Test-Repository
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+:...skipping...
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager-core
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=PolyMathDevops
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/PolyMathDevops/Test-Repository
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+References
+https://www.youtube.com/watch?v=apGV9Kg7ics&t=354s
