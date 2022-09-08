@@ -1,0 +1,121 @@
+Usermanagement commands:
+------------------------------
+
+Note for the root user , user id is 0
+system user id is 1-999
+from 60,000
+
+/etc/passwd, /etc/shadow, /etc/group and /etc/gshadow
+
+To add new user : useradd username
+
+To change password or set password : passwd username
+
+Entry will give get into cat /etc/passwd
+tecmint:x:1000:1000:tecmint:/home/tecmint:/bin/bash
+Username:password:uid:gid:userinformation:homedirectory:shelllogin
+
+To add the userid which we needs:
+useradd -u 1002 navin
+
+To the speicific group:
+useradd -u 1005 -g tecmint tarunika
+
+We will get the specific information of the particular user
+id username
+
+usermod -a -G admins,webadmin,developers tecmint
+multiple group existing users
+
+new users :
+
+useradd -G admins,web,testers,qa username
+
+Create systemuser : -rs
+useradd -rs username
+
+useradd -m -d /home/username -s /bin/bash -g dev -G dev,testing,staging username
+
+In this below we can see the parameters for password agging uid, gid etc.
+view /etc/login.defs
+
+Usermod:
+usermod option username
+
+-d : directory
+-u :uid
+-g : gid
+we can also change the name of username
+-a : append
+
+Userdel:
+
+userdel username
+
+Chage:
+The chage command is used to view and change the user password expiry information. 
+root@rsdmz:~/user_mgmt# chage -l shivani.gadekar
+
+Last password change                                    : Jun 30, 2022
+Password expires                                        : Sep 28, 2022
+Password inactive                                       : never
+Account expires                                         : never
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 90
+Number of days of warning before password expires       : 2
+
+
+chage -d 2018-12-01 root
+use this option to set the last password change date to your specified date in the command
+
+chage -E date username
+Expiry
+
+chage -m -M : Maximum and minimum
+
+chage -W 2 username
+
+Warning
+chage -d 0 -M 90 -W 2
+-M : Maximum days
+-W : Warning days
+
+groupadd groupname:
+
+finger
+This command is used to procure information of the users on a Linux machine. You can use it on both local & remote machines
+
+The syntax ‘finger’ gives data on all the logged users on the remote and local machine.
+
+finger username.
+
+Conclusion:
+man commandname for more information
+
+sudo adduser username
+
+Adds a user
+
+sudo passwd -l ‘username’
+
+Disable a user
+
+sudo userdel -r ‘username’
+
+Delete a user
+
+sudo usermod -a -G GROUPNAME USERNAME
+
+Add user a to a usergroup
+
+sudo deluser USER GROUPNAME
+
+Remove user from a user group
+
+finger
+
+Gives information on all logged in user
+
+finger username
+
+Gives information of a particular user
